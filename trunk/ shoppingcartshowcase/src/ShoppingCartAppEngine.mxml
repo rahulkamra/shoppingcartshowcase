@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<mx:Application xmlns:mx="http://www.adobe.com/2006/mxml" layout="absolute" backgroundGradientAlphas="[1.0, 1.0]" backgroundGradientColors="[#FFFFFF, #FFFFFF]" alpha="1.0" xmlns:com="com.*" xmlns:ns1="com.satyam.components.accordian.*" xmlns:ns2="components.*" xmlns:containers="com.dougmccune.containers.*">
+<mx:Application xmlns:mx="http://www.adobe.com/2006/mxml" layout="absolute" backgroundGradientAlphas="[1.0, 1.0]" backgroundGradientColors="[#FFFFFF, #FFFFFF]" alpha="1.0" xmlns:com="com.*" xmlns:ns1="com.satyam.components.accordian.*" xmlns:ns2="components.*" xmlns:containers="com.dougmccune.containers.*" backgroundImage="Untitled-4.gif">
 	<mx:Style source="style.css"/>
 	
 	<mx:Script>
@@ -112,36 +112,39 @@ Carousel Begin here
 				horizontalGap="40" borderStyle="inset" backgroundColor="0x000000"
 				segments="6" reflectionEnabled="true">
 				<mx:Canvas width="200" height="200">
-				<mx:Image width="100%" height="100%" source="assets/Nokia_N90.gif"/>
+				<mx:Image width="100%" height="100%" source="assets/Mobile/Nokia_N90.gif"/>
 				</mx:Canvas>
 				
 				<mx:Canvas width="200" height="200">
-				<mx:Image width="100%" height="100%" source="assets/wl_alienware_area511.gif"/>
-				</mx:Canvas>
-				
-				
-				<mx:Canvas width="200" height="200">
-				<mx:Image width="100%" height="100%" source="assets/Nokia_N90.gif"/>
+				<mx:Image width="100%" height="100%" source="assets/Mobile/Nokia_3100_blue.gif"/>
 				</mx:Canvas>
 				
 				
 				<mx:Canvas width="200" height="200">
-				<mx:Image width="100%" height="100%" source="assets/Nokia_N90.gif"/>
+				<mx:Image width="100%" height="100%" source="assets/Mobile/Nokia_3120.gif"/>
 				</mx:Canvas>
 				
 				
 				<mx:Canvas width="200" height="200">
-				<mx:Image width="100%" height="100%" source="assets/Nokia_N90.gif"/>
+				<mx:Image width="100%" height="100%" source="assets/Mobile/Nokia_3650.gif"/>
 				</mx:Canvas>
 				
 				
 				<mx:Canvas width="200" height="200">
-				<mx:Image width="100%" height="100%" source="assets/Nokia_N90.gif"/>
+				<mx:Image width="100%" height="100%" source="assets/Mobile/Nokia_6820.gif"/>
 				</mx:Canvas>
 				
-				<!-- here we're dispatching an UPDATE_COMPLETE event every frame. This is so our PV3D material will
-					 update itself properly for this component, since we want the animation to show correctly.
-				  -->
+				
+				<mx:Canvas width="200" height="200">
+				<mx:Image width="100%" height="100%" source="assets/Mobile/Nokia_7610_black.gif"/>
+				</mx:Canvas>
+				
+					<mx:Canvas width="200" height="200">
+				<mx:Image width="100%" height="100%" source="assets/Mobile/Nokia_9300_close.gif"/>
+				</mx:Canvas>
+				
+				
+				
 				
 				
 			</containers:CoverFlowContainer>
