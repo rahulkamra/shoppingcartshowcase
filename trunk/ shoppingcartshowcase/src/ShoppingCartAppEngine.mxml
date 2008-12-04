@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mx:Application xmlns:mx="http://www.adobe.com/2006/mxml" layout="absolute" backgroundGradientAlphas="[1.0, 1.0]" backgroundGradientColors="[#FFFFFF, #FFFFFF]" alpha="1.0" xmlns:com="com.*" xmlns:ns1="com.satyam.components.accordian.*" xmlns:ns2="components.*" xmlns:containers="com.dougmccune.containers.*">
+	<mx:Style source="style.css"/>
+	
+	<mx:Script>
+		<![CDATA[
+			import mx.events.FlexEvent;
+		]]>
+	</mx:Script>
+	<ns1:myAccordian x="25" y="299" width="155" height="348" myData="{myData}"  defaultOpened="1" accordianBGColor="[#6FBCF2,#6FBCF2]" accordianAlpha="[1.0,1.0]">
+	</ns1:myAccordian>
+		<mx:XML xmlns="" id="myData">
+<root>
+<item>
+	<parent>
+	<label>Laptop</label>
+	<parentfunction>menuFunc</parentfunction>
+	</parent>
+	
+	<children>
+	<child>
+	<label>Standard</label>
+	<childfunction>menuFunc</childfunction>
+	</child>
+	<child>
+	<label>Premium</label>
+	<childfunction>menuFunc</childfunction>
+	</child>
+		<child>
+	<label>Gaming</label>
+	<childfunction>menuFunc</childfunction>
+	</child>
+		
+	</children>
+		
+</item>
+	<item>
+	<parent>
+	<label>Mobile Phones</label>
+	<parentfunction>menuFunc1</parentfunction>
+	</parent>
+	
+	<children>
+	
+	<child>
+	<label>Standard</label>
+	<childfunction>menuFunc</childfunction>
+	</child>
+	
+	<child>
+	<label>Premium</label>
+	<childfunction>menuFunc</childfunction>
+	</child>
+		</children>
+</item>
+	<item>
+	<parent>
+	<label>Login</label>
+	<parentfunction>menuFunc1</parentfunction>
+	</parent>
+	</item>
+	<item>
+	<parent>
+	<label>Logout</label>
+	<parentfunction>menuFunc1</parentfunction>
+	</parent>
+	</item>
+	
+
+	</root>
+	</mx:XML>
+		<ns2:imageSwitcher x="202" y="299" height="264" width="554" borderColor="#FFFFFF" borderStyle="solid">
+		</ns2:imageSwitcher>
+		<mx:Panel x="782" y="299" width="196" height="249" layout="absolute" title="Top Sellers" headerHeight="30"  alpha="1.0" borderColor="#009DFF" cornerRadius="20" fontFamily="Comic Sans MS" fontWeight="bold" fontSize="12" fontStyle="normal" textDecoration="normal">
+		</mx:Panel>
+
+
+
+<!--
+Carousel Begin here
+-->
+<mx:Style>
+		Panel {
+		   borderColor: #99CDEE;
+		   borderAlpha: 1;
+		   borderThickness: 1;
+		   borderThicknessLeft: 1;
+		   borderThicknessTop: 0;
+		   borderThicknessBottom: 1;
+		   borderThicknessRight: 1;
+		   roundedBottomCorners: false;
+		   cornerRadius: 5;
+		   headerColors: #b5e6f3, #81b3e6;
+		   dropShadowEnabled: false;
+		   titleStyleName: "mypanelTitle";
+		   vertical-align:middle;
+		   horizontal-align:center;
+		}
+		
+		.mypanelTitle {
+		   letterSpacing: 1;
+		   color: #333333;
+		   fontSize: 12;
+		   fontWeight: bold;
+		}
+	</mx:Style>
+	
+	
+		<mx:VBox id="box" verticalGap="0" height="230" width="98%"  maxHeight="300" >
+			
+			<containers:CoverFlowContainer id="coverflow" width="100%" height="211" 
+				horizontalGap="40" borderStyle="inset" backgroundColor="0x000000"
+				segments="6" reflectionEnabled="true">
+				<mx:Canvas width="200" height="200">
+				<mx:Image width="100%" height="100%" source="assets/Nokia_N90.gif"/>
+				</mx:Canvas>
+				
+				<mx:Canvas width="200" height="200">
+				<mx:Image width="100%" height="100%" source="assets/wl_alienware_area511.gif"/>
+				</mx:Canvas>
+				
+				
+				<mx:Canvas width="200" height="200">
+				<mx:Image width="100%" height="100%" source="assets/Nokia_N90.gif"/>
+				</mx:Canvas>
+				
+				
+				<mx:Canvas width="200" height="200">
+				<mx:Image width="100%" height="100%" source="assets/Nokia_N90.gif"/>
+				</mx:Canvas>
+				
+				
+				<mx:Canvas width="200" height="200">
+				<mx:Image width="100%" height="100%" source="assets/Nokia_N90.gif"/>
+				</mx:Canvas>
+				
+				
+				<mx:Canvas width="200" height="200">
+				<mx:Image width="100%" height="100%" source="assets/Nokia_N90.gif"/>
+				</mx:Canvas>
+				
+				<!-- here we're dispatching an UPDATE_COMPLETE event every frame. This is so our PV3D material will
+					 update itself properly for this component, since we want the animation to show correctly.
+				  -->
+				
+				
+			</containers:CoverFlowContainer>
+			
+			<mx:HScrollBar id="scrollbar" width="100%" pageSize="1" maxScrollPosition="{coverflow.numChildren - 1}"
+				scrollPosition="{coverflow.selectedIndex}" 
+				scroll="coverflow.selectedIndex = Math.round(scrollbar.scrollPosition)" />
+				
+		</mx:VBox>
+		
+<!--
+Carousel End here
+-->
+</mx:Application>
