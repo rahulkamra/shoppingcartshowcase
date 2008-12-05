@@ -1,0 +1,9 @@
+/* CSS file */
+
+.spacerFP
+{
+	fillAlphas: 1.0, 1.0;
+	fillColors: #6FBCF2, #6FBCF2;
+	/*fillColors: #000000, #000000;*/
+	corner-radius:0;
+}
