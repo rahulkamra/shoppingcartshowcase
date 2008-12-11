@@ -3,7 +3,7 @@ import flash.events.TimerEvent;
 import flash.utils.Timer;
 
 
-public var timer:Timer = new Timer(3000,60);
+public var timer:Timer = new Timer(5000,60);
 public var currentImage:int = 0; 
 public var dataCollection:XMLList;
 
