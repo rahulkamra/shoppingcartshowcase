@@ -1,0 +1,18 @@
+application: riashowcase
+version: 1
+runtime: python
+api_version: 1
+
+handlers:
+- url: /staticFiles
+  static_dir: staticFiles
+
+
+
+
+
+- url: /
+  script: util/redirections.py
+
+
+
