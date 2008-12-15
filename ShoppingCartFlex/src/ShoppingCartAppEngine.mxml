@@ -1,0 +1,247 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mx:Application xmlns:mx="http://www.adobe.com/2006/mxml" layout="absolute" backgroundGradientAlphas="[1.0, 1.0]" backgroundGradientColors="[#92ccd7, #023c47]" alpha="1.0" xmlns:com="com.*" xmlns:ns1="com.satyam.components.accordian.*" xmlns:ns2="components.*" xmlns:containers="com.dougmccune.containers.*" creationComplete="init()">
+	<mx:Style source="style.css"/>
+	<mx:Script>
+		<![CDATA[
+			import mx.events.FlexEvent;
+			
+			public function init():void{
+			
+			dataCollection = imageData.item;
+			timer.addEventListener(TimerEvent.TIMER,changeImage);
+			timer.start();
+		}
+		
+		
+		]]>
+	</mx:Script>
+	<ns1:myAccordian x="25" y="299" width="155" height="348" myData="{myData}"  defaultOpened="1" accordianBGColor="[#6FBCF2,#6FBCF2]" accordianAlpha="[1.0,1.0]">
+	</ns1:myAccordian>
+		<mx:XML xmlns="" id="myData">
+<root>
+<item>
+	<parent>
+	<label>Laptop</label>
+	<parentfunction>menuFunc</parentfunction>
+	</parent>
+	
+	<children>
+	<child>
+	<label>Standard</label>
+	<childfunction>menuFunc</childfunction>
+	</child>
+	<child>
+	<label>Premium</label>
+	<childfunction>menuFunc</childfunction>
+	</child>
+		<child>
+	<label>Gaming</label>
+	<childfunction>menuFunc</childfunction>
+	</child>
+		
+	</children>
+		
+</item>
+	<item>
+	<parent>
+	<label>Mobile Phones</label>
+	<parentfunction>menuFunc1</parentfunction>
+	</parent>
+	
+	<children>
+	
+	<child>
+	<label>Standard</label>
+	<childfunction>menuFunc</childfunction>
+	</child>
+	
+	<child>
+	<label>Premium</label>
+	<childfunction>menuFunc</childfunction>
+	</child>
+		</children>
+</item>
+	<item>
+	<parent>
+	<label>Login</label>
+	<parentfunction>menuFunc1</parentfunction>
+	</parent>
+	</item>
+	<item>
+	<parent>
+	<label>Logout</label>
+	<parentfunction>menuFunc1</parentfunction>
+	</parent>
+	</item>
+	
+
+	</root>
+	</mx:XML>
+		<mx:Panel x="782" y="299" width="196" height="249" layout="absolute" title="Top Sellers" headerHeight="30"  alpha="1.0" borderColor="#009DFF" cornerRadius="20" fontFamily="Comic Sans MS" fontWeight="bold" fontSize="12" fontStyle="normal" textDecoration="normal">
+		</mx:Panel>
+
+
+
+<!--
+Carousel Begin here
+-->
+<mx:Style>
+		Panel {
+		   borderColor: #99CDEE;
+		   borderAlpha: 1;
+		   borderThickness: 1;
+		   borderThicknessLeft: 1;
+		   borderThicknessTop: 0;
+		   borderThicknessBottom: 1;
+		   borderThicknessRight: 1;
+		   roundedBottomCorners: false;
+		   cornerRadius: 5;
+		   headerColors: #b5e6f3, #81b3e6;
+		   dropShadowEnabled: false;
+		   titleStyleName: "mypanelTitle";
+		   vertical-align:middle;
+		   horizontal-align:center;
+		}
+		
+		.mypanelTitle {
+		   letterSpacing: 1;
+		   color: #333333;
+		   fontSize: 12;
+		   fontWeight: bold;
+		}
+	</mx:Style>
+	
+	
+		<mx:VBox id="box" verticalGap="0" height="230" width="98%"  maxHeight="300" backgroundImage="header.jpg" backgroundAlpha="1.0" backgroundColor="#18525d"
+			borderThickness="0.0">
+			<mx:HBox backgroundAlpha="0.0" borderThickness="0.0">
+				<mx:Canvas width="240" height="211" backgroundImage="assets/logo.png"/>
+			<containers:CoverFlowContainer id="coverflow" width="760" height="211" 
+				horizontalGap="40" 
+				segments="6" reflectionEnabled="true" backgroundColor="#18525d" borderThickness="0.0">
+				<mx:Canvas width="200" height="200" borderThickness="0.0">
+				<mx:Image width="100%" height="100%" source="assets/Mobile/iphone.png"/>
+				</mx:Canvas>
+				
+				<mx:Canvas width="200" height="200" borderThickness="0.0">
+				<mx:Image width="100%" height="100%" source="assets/Mobile/asus.png"/>
+				</mx:Canvas>
+				
+				
+				<mx:Canvas width="200" height="200" borderThickness="0.0">
+				<mx:Image width="100%" height="100%" source="assets/Mobile/imate.png"/>
+				</mx:Canvas>
+				
+				
+				<mx:Canvas width="200" height="200" borderThickness="0.0">
+				<mx:Image width="100%" height="100%" source="assets/Mobile/htc1.png"/>
+				</mx:Canvas>
+				
+				
+				<mx:Canvas width="200" height="200" borderThickness="0.0">
+				<mx:Image width="100%" height="100%" source="assets/Mobile/htc2.png"/>
+				</mx:Canvas>
+				
+				
+				<mx:Canvas width="200" height="200" borderThickness="0.0">
+				<mx:Image width="100%" height="100%" source="assets/Mobile/samsung.png"/>
+				</mx:Canvas>
+				
+					<mx:Canvas width="200" height="200" borderThickness="0.0">
+				<mx:Image width="100%" height="100%" source="assets/Mobile/xda.png"/>
+				</mx:Canvas>
+				
+				
+				
+				
+				
+			</containers:CoverFlowContainer>
+						</mx:HBox>
+			<!--mx:HScrollBar id="scrollbar" width="1000" pageSize="1" maxScrollPosition="{coverflow.numChildren - 1}"
+				scrollPosition="{coverflow.selectedIndex}" 
+				scroll="coverflow.selectedIndex = Math.round(scrollbar.scrollPosition)" /-->
+		</mx:VBox>
+		
+<!--
+Carousel End here
+-->
+
+<!--
+Image Switcher
+-->
+
+
+
+<mx:Script source="ImageSwitcherUtil.as"/>
+
+		<mx:ApplicationControlBar x="262.5" y="299" width="389" height="235" id="main_ACB" >
+		<mx:Canvas width="100%" height="100%" id="main_Canvas" label="main_Canvas" >
+			<mx:VBox x="10" y="8" width="15%" height="100%" id="nav_VBox">
+				<mx:Image id="nav_img1" width="100%" height="25%" click="thumbnailClicked(0)">
+					<mx:source>assets/alien-small.png</mx:source>
+				</mx:Image>
+				<mx:Image id="nav_img2" width="100%" height="25%" click="thumbnailClicked(1)">
+					<mx:source>assets/laptop-small.png</mx:source>
+				</mx:Image>
+				<mx:Image id="nav_img3" width="100%" height="25%" click="thumbnailClicked(2)">
+					<mx:source>assets/ps3-small.png</mx:source>
+				</mx:Image>
+				<mx:Image id="nav_img4" width="100%" height="25%" click="thumbnailClicked(3)">
+					<mx:source>assets/xps-small.png</mx:source>
+				</mx:Image>
+			</mx:VBox>
+			<mx:Image x="87" y="10" id="prod_image" scaleContent="true" autoLoad="true">
+				<mx:source>assets/alien.png</mx:source>
+			</mx:Image>
+			<mx:TextArea x="182" y="198" width="184" borderThickness="0" alpha="0.0" id="prod_desc" text="Alienware" wordWrap="true" editable="false" fontFamily="Trebuchet MS" fontSize="15" height="22" color="#FFFFFF"/>
+		</mx:Canvas>
+	</mx:ApplicationControlBar>
+<mx:XML xmlns="" id="imageData">
+	<root>
+	<item>
+	<sno>0</sno>
+	<imgsrc>assets/alien.png</imgsrc>
+	<desc>Alienware</desc>
+	</item>
+	
+	<item>
+	<sno>1</sno>
+	<imgsrc>assets/laptop.png</imgsrc>
+	<desc>Acer</desc>
+	</item>
+	
+	<item>
+	<sno>2</sno>
+	<imgsrc>assets/ps3.png</imgsrc>
+	<desc>Playstation 3</desc>
+	</item>
+	
+		<item>
+	<sno>3</sno>
+	<imgsrc>assets/xps.png</imgsrc>
+	<desc>Dell XPS</desc>
+	</item>
+	
+	</root>
+	
+	
+</mx:XML>
+
+	<mx:Fade alphaFrom="1" alphaTo="0"  duration="500" id="fadeOut" effectEnd="changeImageInstantly()"/>
+	<mx:Fade alphaFrom="0" alphaTo="1"  duration="500" id="fadeIn" />
+	<mx:ApplicationControlBar x="25" y="238" width="952.9545" height="32.954544" fillAlphas="[1.0,0.8]" disabledOverlayAlpha="1.0" color="#E9E9E9" barColor="#EFEFEF" paddingTop="6">
+		<mx:Label text="Home   |" color="#18525d" fontSize="12" width="70.07576" height="20"/>
+		<mx:Label text="Products   |" color="#18525d" fontSize="12" width="80.07576" height="20"/>
+		<mx:Label text="Specials   |" color="#18525d" fontSize="12" width="80.606064" height="20"/>
+		<mx:Label text="My Account   |" color="#18525d" fontSize="12" width="101.06061" height="20"/>
+		<mx:Label text="Sign Up   |" color="#18525d" fontSize="12" width="80.606064" height="20"/>
+		<mx:Label text="Shipping   |" color="#18525d" width="81.13637" height="18.030302" fontSize="12"/>
+		<mx:Label text="Contact Us" color="#18525d" width="80.530304" height="18.030302" fontSize="12"/>
+	</mx:ApplicationControlBar>
+	
+	
+	<!--
+	Image Switcher End here
+	-->
+	
+</mx:Application>
