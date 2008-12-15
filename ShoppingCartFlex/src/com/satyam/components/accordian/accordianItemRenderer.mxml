@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+	Date : 27th November 2008 3:17pm
+		
+	This file sets the individual properties for each accordian element
+	Contains basic setter methods as per property, aptly described by their names
+	
+	Function : init() -> initialises the children for an accordian element as specified in the XML document
+	
+
+-->
+
+<mx:ApplicationControlBar xmlns:mx="http://www.adobe.com/2006/mxml" width="100%"  creationComplete="init(event)" cornerRadius="20"  fillAlphas="{accordianAlpha}" height="{minimumHeight}" fillColors="{accordianBGColor}">
+    <mx:Script>
+	<![CDATA[
+		import mx.collections.ArrayCollection;
+		import flash.utils.getDefinitionByName;
+		import mx.binding.utils.BindingUtils;
+		import mx.controls.Label;
+		import mx.controls.Alert;
+		[Bindable]
+		public var maximunHeight:int;
+		[Bindable]
+		private var temp:String='Please Give a Label';
+		
+		private var allObjList:ArrayCollection=new ArrayCollection();
+		private var effectDuration:int;
+		[Bindable]
+		public var minimumHeight:int=40
+		private var childData:XMLList=new XMLList();
+		public  var functionName:String;
+		[Bindable]
+		private var accordianBGColor:Array=[0x0cdecd,0x0cdecd];
+		
+		[Bindable]
+		public var accordianAlpha:Array=[1.0,1.0];
+		
+		public function setAccordianBGColor(bgColor:Array):void{
+			accordianBGColor.pop();
+			accordianBGColor.pop();
+			var color2:uint=bgColor[0]
+			var color1:uint=bgColor[1]
+			accordianBGColor.push(color1)
+			accordianBGColor.push(color2);
+			
+		}
+		public function setParentLabel(parentLabelTemp:String):void{
+			temp=parentLabelTemp;
+		}
+		public function setChildData(childData:XMLList):void{
+			this.childData=childData;
+		}
+		public function setParentFunctionName(functionName:String):void{
+			this.functionName=functionName;
+		}
+		public function setEffectDuration(effectDuration:int):void{
+			this.effectDuration=effectDuration;
+		}
+		public function setAllObjList(allObjList:ArrayCollection):void{
+			this.allObjList=allObjList;
+		}
+		
+		
+		public function init(event:Event):void{
+			var childrens:XMLList=childData.child;
+			
+			for(var count:int=0;count<childrens.length();count++){
+				var temp:LinkButton=new LinkButton();
+				temp.width=childVbox.width;
+				temp.label=childrens[count].label
+				temp.styleName='linkButton'
+				childVbox.addChild(temp);
+				temp.addEventListener(MouseEvent.CLICK,this[childrens[count].childfunction]);
+			}
+			
+			maximunHeight=40 +count*30;
+		}
+			
+
+	]]>
+    </mx:Script>
+    <mx:Style source="style.css"/>
+<mx:Script source="../../../../myAccordianUtil.as"/>
+    <mx:Canvas width="100%" height="100%" verticalScrollPolicy="off" horizontalScrollPolicy="off">
+        <mx:LinkButton x="10" y="5"  width="100%" textAlign="left" cornerRadius="10" id="parentLabel" label="{this.temp}" />
+        <mx:VBox x="45" y="35" height="100%" width="100%" id="childVbox">
+        </mx:VBox>
+							
+    </mx:Canvas>
+</mx:ApplicationControlBar>

@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+	Date : 27th November 2008 3:17pm
+	
+	This is the main file which sets the properties and renders the accordian 
+ 	
+ 	Function : init() ->  initialises the accordian and sets the init properties recquired 
+	Function : startEffect() -> adds the corresponding event listeners 
+	Function : showEffect() -> defines and renders the effects
+
+-->
+<mx:Canvas xmlns:mx="http://www.adobe.com/2006/mxml"  creationComplete="init()" >
+    <mx:Script>
+		<![CDATA[
+			import mx.collections.ArrayCollection;
+			import mx.controls.Alert;
+	
+			public var myData:XML;
+			public var effectDuration:int=1000;
+			public var defaultOpened:int;
+			public var defaultFuncRun:Boolean=false;
+			public var allObjList:ArrayCollection=new ArrayCollection();
+			public var accordianBGColor:Array;
+			public var accordianAlpha:Array;
+		
+		
+		private function init():void{
+			var items:XMLList=XMLList(myData.item)
+			for(var count:int=0;count<items.length();count++){
+				var tempObj:accordianItemRenderer=new accordianItemRenderer();
+				tempObj.setChildData(items[count].children)
+				tempObj.setParentFunctionName(items[count].parent.parentfunction);
+				tempObj.setParentLabel(items[count].parent.label)
+				tempObj.setEffectDuration(effectDuration);
+				tempObj.setAccordianBGColor(accordianBGColor);
+				tempObj.accordianAlpha = accordianAlpha;
+				
+				var innerCount:int=0
+				if(count==defaultOpened){
+					for(;innerCount<items[count].children.child.length();innerCount++){
+					}
+					tempObj.minimumHeight=40 +innerCount*30;
+				}
+				allObjList.addItem(tempObj)
+				MyVbox.addChild(tempObj);
+				tempObj.parentLabel.addEventListener(MouseEvent.CLICK,startEffect);
+				
+			}
+		}
+		private function startEffect(event:MouseEvent):void{
+			showEffect(event);
+			event.currentTarget.removeEventListener(MouseEvent.CLICK,startEffect)
+			event.currentTarget.addEventListener(MouseEvent.CLICK,this[event.currentTarget.parent.parent.functionName]);
+			event.currentTarget.dispatchEvent(new MouseEvent(MouseEvent.CLICK));
+			event.currentTarget.removeEventListener(MouseEvent.CLICK,this[event.currentTarget.parent.parent.functionName])
+			event.currentTarget.addEventListener(MouseEvent.CLICK,startEffect);
+		}
+			
+		public function showEffect(event:MouseEvent):void{
+			var temp:ArrayCollection=new ArrayCollection(allObjList.toArray())
+			temp.removeItemAt(temp.getItemIndex(event.currentTarget.parent.parent));
+			allminimize.duration=effectDuration;
+			currentMaximize.duration=effectDuration;
+			allminimize.targets=temp.toArray();
+			allminimize.heightTo=40;
+			currentMaximize.heightTo=event.currentTarget.parent.parent.maximunHeight;
+			currentMaximize.target=event.currentTarget.parent.parent;
+			if(!newAccordian.isPlaying){
+			newAccordian.play();
+			}
+		}
+		
+		]]>
+    </mx:Script>
+    <mx:Script source="../../../../myAccordianUtil.as"/>
+    <mx:VBox x="3" y="2" height="100%" width="100%"  paddingLeft="5" paddingRight="5" id="MyVbox">
+    </mx:VBox>
+    <mx:Parallel id="newAccordian">
+        <mx:Resize id="allminimize"  />
+        <mx:Resize id="currentMaximize"   />
+    </mx:Parallel>
+</mx:Canvas>

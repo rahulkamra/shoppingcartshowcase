@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mx:ApplicationControlBar xmlns:mx="http://www.adobe.com/2006/mxml"  creationComplete="init()"  width="547">
+<mx:Canvas width="98%" height="98%">
+	
+
+<mx:Script>
+	<![CDATA[
+		import mx.controls.Alert;
+		import mx.collections.ArrayCollection;
+	private var dataCollection:XMLList;
+		public function init():void{
+			dataCollection=localData.item;
+			Alert.show(dataCollection[1].imgsrc);
+		}
+		public function changeImage():void{
+			
+			
+		}
+		public function changeImageInstantaly():void{
+			
+		}
+	]]>
+</mx:Script>
+
+	<mx:Image x="0" y="0" width="100%" height="68%" source="assets/Nokia_N90.gif"/>
+	
+	<mx:Text x="10" y="210" text="Text" width="98%" height="53"/>
+	<mx:Image x="423" y="10" id="left" source="assets/left.png"/>
+	<mx:Image x="463" y="10" id="right" source="assets/right.png"/>
+	</mx:Canvas>
+		<mx:XML xmlns="" id="localData" >
+	<root>
+	<item>
+	<imgsrc>/assets/bck1.jpg</imgsrc>
+	<desc></desc>
+	</item>
+	
+	<item>
+	<imgsrc>/assets/bck1.jpg</imgsrc>
+	<desc></desc>
+	</item>
+	
+	<item>
+	<imgsrc>/assets/bck1.jpg</imgsrc>
+	<desc></desc>
+	</item>
+	
+	</root>
+</mx:XML>
+</mx:ApplicationControlBar>
